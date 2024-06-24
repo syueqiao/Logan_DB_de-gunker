@@ -7,7 +7,7 @@
 #usage
 function usage {
   echo ""
-  echo "Usage: ./logan_genome_QC.sh https://ftp.edu/genome.fna.gz protein_DB.fa"
+  echo "Usage: ./logan_DB_de-gunker.sh https://ftp.edu/genome.fna.gz protein_DB.fa"
   echo ""
   echo "    Input parameters"
   echo "    -b    Input genome is in 2bit format"
