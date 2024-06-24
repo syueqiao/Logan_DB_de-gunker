@@ -1,7 +1,7 @@
 # logan_genome_QC
 Short script to run quality control of a given protein DB against a input genome of choice. For example, if generating a papillomavirus database, this script can be used to identify sequences that might return false positives, such as those with integration sites that may contain host or misassembled/misannotated off-target sequences. 
 
-TBD PIPELINE IMAGE
+![image](https://github.com/syueqiao/logan_genome_QC/assets/105825554/6a95c82b-5ca0-424b-b920-bf5f05780ae8)
 
 ### Inputs
 The script as it is set up currently accepts 2 inputs:
