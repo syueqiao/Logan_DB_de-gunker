@@ -1,7 +1,9 @@
-# logan_genome_QC
-Short script to run quality control of a given protein DB against a input genome of choice. For example, if generating a papillomavirus database, this script can be used to identify sequences that might return false positives, such as those with integration sites that may contain host or misassembled/misannotated off-target sequences. 
+# Logan_DB_de-gunker
+"Sticky sequences" are sequences that appear in common genomes on the SRA (human, mouse, yeast etc...). If an input protein database contains these sequences (or subsequences), the output of the DIAMOND search of Logan will be highly populated with false positive contigs that have been captured by these sticky sequences. 
 
-![image](https://github.com/syueqiao/logan_genome_QC/assets/105825554/f484f0b4-bf38-4940-b6bb-aaf29ea88339)
+logan_DB_de-gunker.sh is a short script designed to identify "sticky sequences" in a given protein database against a common genome of choice. For example, if generating a papillomavirus database from NCBI nucleotide sequences, this script can identify which (and where) sequences contain human host DNA from papillomavirus integration sites.
+
+![image](https://github.com/syueqiao/logan_genome_QC/assets/105825554/5fb5cf9a-1d70-4d29-8dd5-adac3b96ef2b)
 
 ### Inputs
 The script as it is set up currently accepts 2 inputs:
@@ -16,11 +18,11 @@ The script outputs a diamond .pro file, which can be used to remove whole or par
 ### Example Usage
 With  2bit file format:
 ```
-./logan_genome_QC.sh -b "https://hgdownload.soe.ucsc.edu/goldenPath/sacCer3/bigZips/sacCer3.2bit" PV_test_DB.fasta
+./logan_DB_de-gunker.sh -b "https://hgdownload.soe.ucsc.edu/goldenPath/sacCer3/bigZips/sacCer3.2bit" PV_test_DB.fasta
 ```
 With a gzipped fasta file:
 ```
-./logan_genome_QC.sh "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz" PV_test_DB.fasta
+./logan_DB_de-gunker.sh "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz" PV_test_DB.fasta
 ```
 ### Example Output
 in sacCer3.pro
