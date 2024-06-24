@@ -4,41 +4,60 @@
 #Dependency: gunzip, seqkit, diamond
 #Output directories and names are ugly (for now) but it works
 
+#usage
+function usage {
+  echo ""
+  echo "Usage: ./logan_genome_QC.sh https://ftp.edu/genome.fna.gz protein_DB.fa"
+  echo ""
+  echo "    Input parameters"
+  echo "    -b    Input genome is in 2bit format"
+  echo ""
+  echo "    Output : genome.fna.pro"
+  exit 1
+}
+
 #setup
-
 BIT='false'
+GNM=''
+DB=''
 
-while getopts "b" arg; do
-  case $arg in
-    #2bit format
+while getopts ":b:h:" arg; do
+  case "$arg" in
     b)
       BIT='true'
       ;;
+     h)
+      usage
+      ;; 
+    \?) #unrecognized option - show help
+      echo "Input parameter not recognized"
+      usage
+      ;;
   esac
 done
-shift $((OPTIND-1))
+shift $((OPTIND-2))
 
 #set CPU Parameters
 THREADS='8'
 
-#input genomes for scanning
+#input genomes for scanning and parse names
 GNM=$1
 name="${GNM##*/}"
 basename="${name%.*}"
+
 #input query protein db
-IN=$2
+DB=$2
 
 
 #create diamond db with sequences above
-diamond makedb --in ${IN} -d ${IN}.dmnd
+diamond makedb --in ${DB} -d ${DB}.dmnd
 
 #diamond search
-
 if [ $BIT = 'true' ]; then
 
 twoBitToFa "${GNM}" -udcDir=. stdout | seqkit sliding -s 800 -W 1000 - | diamond blastx \
 	  -q - \
-	  -d ${IN}.dmnd \
+	  -d ${DB}.dmnd \
 	  --masking 0 \
 	  --ultra-sensitive \
       --seed-cut 0.9 \
@@ -53,7 +72,7 @@ else
 
 wget -O - "${GNM}" | gunzip | seqkit sliding -s 800 -W 1000 - | diamond blastx \
 	  -q - \
-	  -d ${IN}.dmnd \
+	  -d ${DB}.dmnd \
 	  --masking 0 \
 	  --ultra-sensitive \
       --seed-cut 0.9 \
