@@ -1,7 +1,7 @@
 # logan_unsticker
 "Sticky sequences" are sequences that appear in common genomes on the SRA (human, mouse, yeast etc...). If an input protein database contains these sequences (or subsequences), the output of the DIAMOND search of Logan will be highly populated with false positive contigs that have been captured by these sticky sequences. 
 
-logan_DB_de-gunker.sh is a short script designed to identify "sticky sequences" in a given protein database against a common genome of choice. For example, if generating a papillomavirus database from NCBI nucleotide sequences, this script can identify which (and where) sequences contain human host DNA from papillomavirus integration sites.
+logan_unsticker.sh is a short script designed to identify "sticky sequences" in a given protein database against a common genome of choice. For example, if generating a papillomavirus database from NCBI nucleotide sequences, this script can identify which (and where) sequences contain human host DNA from papillomavirus integration sites.
 
 ![image](https://github.com/syueqiao/logan_genome_QC/assets/105825554/5fb5cf9a-1d70-4d29-8dd5-adac3b96ef2b)
 
