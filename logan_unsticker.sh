@@ -1,7 +1,7 @@
 #!/bin/bash
 #script to run overlapping windows of input genomes against input DB
 #accepts URLs of genomes in 2bit and zipped fasta format
-#Dependency: gunzip, seqkit, diamond
+#Dependency: gunzip, seqkit, diamond, twoBitToFa utility
 #Output directories and names are ugly (for now) but it works
 
 #usage
