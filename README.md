@@ -3,6 +3,8 @@
 
 logan_unsticker.sh is a short script designed to identify "sticky sequences" in a given protein database against a common genome of choice. For example, if generating a papillomavirus database from NCBI nucleotide sequences, this script can identify which (and where) sequences contain human host DNA from papillomavirus integration sites.
 
+See Issues tab for recommended genomes to screen against - genomes to be included will be continuously updated. False positives can be commented here for inclusion.
+
 ![image](https://github.com/syueqiao/logan_genome_QC/assets/105825554/5fb5cf9a-1d70-4d29-8dd5-adac3b96ef2b)
 
 ### Inputs
