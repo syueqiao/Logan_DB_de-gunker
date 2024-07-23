@@ -8,9 +8,10 @@ logan_unsticker.sh is a short script designed to identify "sticky sequences" in 
 ### Inputs
 The script as it is set up currently accepts 2 inputs:
 1. A FTP url of the genome to be scanned, either in 2bit, or gzipped fasta format. This can be easily manipulated to accept other input formats.
-2. A fasta file containing protein sequences to generate a diamond database with.
+2. A fasta file containing protein sequences to generate a diamond database with. Script can also be modified to directly accept formatted diamond .dmnd databases.
 
 To toggle between 2bit/fasta format, use -b flag to denote 2bit format. 
+twoBitToFa utility can be found: https://hgdownload.soe.ucsc.edu/admin/exe/
 
 ### Outputs
 The script outputs a diamond .pro file, which can be used to remove whole or partial sequences depending on desired protein DB and context. 
@@ -18,11 +19,11 @@ The script outputs a diamond .pro file, which can be used to remove whole or par
 ### Example Usage
 With  2bit file format:
 ```
-./logan_DB_de-gunker.sh -b "https://hgdownload.soe.ucsc.edu/goldenPath/sacCer3/bigZips/sacCer3.2bit" PV_test_DB.fasta
+./logan_unsticker.sh -b "https://hgdownload.soe.ucsc.edu/goldenPath/sacCer3/bigZips/sacCer3.2bit" PV_test_DB.fasta
 ```
 With a gzipped fasta file:
 ```
-./logan_DB_de-gunker.sh "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz" PV_test_DB.fasta
+./logan_unsticker.sh "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz" PV_test_DB.fasta
 ```
 ### Example Output
 in sacCer3.pro
